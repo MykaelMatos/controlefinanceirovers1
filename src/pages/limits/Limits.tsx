@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { CurrencyInput } from "@/components/ui/currency-input";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "@/hooks/use-toast";
 import { AlertCircle, ArrowRight, Check, Plus } from "lucide-react";
@@ -104,11 +105,10 @@ const Limits = () => {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row gap-4 items-center mb-4">
-            <Input
-              type="number"
+            <CurrencyInput
               placeholder="Valor do limite total"
               value={totalLimit}
-              onChange={(e) => setTotalLimit(e.target.value)}
+              onChange={setTotalLimit}
               className="flex-1"
             />
             <Button onClick={handleUpdateTotalLimit}>
@@ -162,14 +162,13 @@ const Limits = () => {
                   <h3 className="font-medium mb-2">{category}</h3>
                   
                   <div className="flex flex-col md:flex-row gap-4 items-center mb-4">
-                    <Input
-                      type="number"
+                    <CurrencyInput
                       placeholder={`Limite para ${category}`}
                       value={limitValues[category] || ""}
-                      onChange={(e) =>
+                      onChange={(value) =>
                         setLimitValues((prev) => ({
                           ...prev,
-                          [category]: e.target.value,
+                          [category]: value,
                         }))
                       }
                       className="flex-1"

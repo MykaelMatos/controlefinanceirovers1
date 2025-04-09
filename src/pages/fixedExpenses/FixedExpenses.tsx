@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { CurrencyInput } from "@/components/ui/currency-input";
 import {
   Select,
   SelectContent,
@@ -124,6 +125,11 @@ const FixedExpenses = () => {
     setEditingId(null);
   };
 
+  // Formatar valor monetário
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  };
+
   return (
     <div className="container max-w-4xl mx-auto">
       <Card className="mb-8">
@@ -159,13 +165,10 @@ const FixedExpenses = () => {
                   name="value"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Valor (R$)</FormLabel>
+                      <FormLabel>Valor</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.01"
-                          min="0"
-                          placeholder="0,00"
+                        <CurrencyInput
+                          placeholder="R$ 0,00"
                           {...field}
                         />
                       </FormControl>
@@ -305,7 +308,7 @@ const FixedExpenses = () => {
                   fixedExpenses.map((expense) => (
                     <TableRow key={expense.id}>
                       <TableCell className="font-medium">{expense.name}</TableCell>
-                      <TableCell>R$ {expense.value.toFixed(2)}</TableCell>
+                      <TableCell>{formatCurrency(expense.value)}</TableCell>
                       <TableCell>{expense.periodicity}</TableCell>
                       <TableCell>{expense.category}</TableCell>
                       <TableCell>

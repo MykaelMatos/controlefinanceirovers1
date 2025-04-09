@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { CurrencyInput } from "@/components/ui/currency-input";
 import {
   Select,
   SelectContent,
@@ -125,13 +126,10 @@ const AddExpense = () => {
                   name="value"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Valor (R$)</FormLabel>
+                      <FormLabel>Valor</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          step="0.01"
-                          min="0"
-                          placeholder="0,00"
+                        <CurrencyInput
+                          placeholder="R$ 0,00"
                           {...field}
                         />
                       </FormControl>
@@ -241,13 +239,10 @@ const AddExpense = () => {
                       name="totalValue"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Valor Total (R$)</FormLabel>
+                          <FormLabel>Valor Total</FormLabel>
                           <FormControl>
-                            <Input
-                              type="number"
-                              step="0.01"
-                              min="0"
-                              placeholder="Mesmo valor se não parcelado"
+                            <CurrencyInput
+                              placeholder="R$ 0,00"
                               {...field}
                             />
                           </FormControl>
@@ -262,7 +257,10 @@ const AddExpense = () => {
                       <p>
                         Valor de cada parcela:{" "}
                         <strong>
-                          R$ {(Number(form.watch("totalValue") || form.watch("value")) / Number(installments)).toFixed(2)}
+                          {(Number(form.watch("totalValue") || form.watch("value")) / Number(installments)).toLocaleString('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL',
+                          })}
                         </strong>
                       </p>
                     </div>
