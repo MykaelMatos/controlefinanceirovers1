@@ -89,6 +89,11 @@ const Login = () => {
                   </FormItem>
                 )}
               />
+              <div className="text-sm text-right">
+                <Link to="/forgot-password" className="text-primary hover:underline">
+                  Esqueci minha senha
+                </Link>
+              </div>
               <Button type="submit" className="w-full">
                 Entrar
               </Button>

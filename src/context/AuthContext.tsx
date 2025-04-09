@@ -9,6 +9,7 @@ interface AuthContextProps {
   login: (username: string, password: string) => boolean;
   register: (username: string, password: string) => boolean;
   logout: () => void;
+  resetPassword: (username: string) => boolean;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -86,9 +87,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       description: "Você saiu do sistema",
     });
   };
+  
+  const resetPassword = (username: string): boolean => {
+    const users = getFromLocalStorage<User[]>('users', []);
+    const user = users.find(u => u.username === username);
+    
+    // Em uma aplicação real, enviaríamos um e-mail com instruções para redefinir a senha
+    // Como este é um exemplo simplificado, apenas retornamos true para simular sucesso
+    
+    // Não revelamos se o usuário existe ou não por questões de segurança
+    toast({
+      title: "Instruções enviadas",
+      description: "Se o usuário existir, um e-mail com instruções para redefinição de senha foi enviado.",
+    });
+    return true;
+  };
 
   return (
-    <AuthContext.Provider value={{ currentUser, isAuthenticated, login, register, logout }}>
+    <AuthContext.Provider value={{ currentUser, isAuthenticated, login, register, logout, resetPassword }}>
       {children}
     </AuthContext.Provider>
   );

@@ -15,6 +15,7 @@ import RequireAuth from "@/components/auth/RequireAuth";
 import Dashboard from "@/pages/Dashboard";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
+import ForgotPassword from "@/pages/auth/ForgotPassword";
 import AddExpense from "@/pages/expenses/AddExpense";
 import AddIncome from "@/pages/incomes/AddIncome";
 import FixedExpenses from "@/pages/fixedExpenses/FixedExpenses";
@@ -40,6 +41,7 @@ const App = () => (
                     {/* Public Routes */}
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
                     
                     {/* Protected Routes */}
                     <Route element={<RequireAuth />}>
