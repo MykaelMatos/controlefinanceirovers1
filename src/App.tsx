@@ -32,10 +32,10 @@ const App = () => (
         <SettingsProvider>
           <FinanceProvider>
             <NotificationProvider>
-              <Layout>
-                <Toaster />
-                <Sonner />
-                <BrowserRouter>
+              <BrowserRouter>
+                <Layout>
+                  <Toaster />
+                  <Sonner />
                   <Routes>
                     {/* Public Routes */}
                     <Route path="/login" element={<Login />} />
@@ -55,8 +55,8 @@ const App = () => (
                     {/* 404 Page */}
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                </BrowserRouter>
-              </Layout>
+                </Layout>
+              </BrowserRouter>
             </NotificationProvider>
           </FinanceProvider>
         </SettingsProvider>
