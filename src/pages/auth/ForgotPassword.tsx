@@ -17,11 +17,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Key, Mail, ArrowLeft } from "lucide-react";
+import { Key, Mail, ArrowLeft, Info } from "lucide-react";
 
 const forgotPasswordSchema = z.object({
-  username: z.string().min(3, {
-    message: "Nome de usuário deve ter pelo menos 3 caracteres",
+  usernameOrEmail: z.string().min(3, {
+    message: "Nome de usuário ou email deve ter pelo menos 3 caracteres",
   }),
 });
 
@@ -35,13 +35,12 @@ const ForgotPassword = () => {
   const form = useForm<ForgotPasswordFormValues>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
-      username: "",
+      usernameOrEmail: "",
     },
   });
 
   const onSubmit = (data: ForgotPasswordFormValues) => {
-    // Em um aplicativo real, enviaríamos um e-mail com um link para redefinir a senha
-    // Como esta é uma demonstração, apenas exibiremos uma mensagem de sucesso
+    resetPassword(data.usernameOrEmail);
     setIsSubmitted(true);
   };
 
@@ -56,7 +55,7 @@ const ForgotPassword = () => {
           </div>
           <CardTitle className="text-2xl text-center font-bold">Recuperar Senha</CardTitle>
           <CardDescription className="text-center">
-            Digite seu nome de usuário para receber instruções de recuperação
+            Digite seu nome de usuário ou email para receber uma nova senha
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -66,7 +65,7 @@ const ForgotPassword = () => {
                 <Mail className="h-4 w-4" />
                 <AlertTitle>Instruções enviadas!</AlertTitle>
                 <AlertDescription>
-                  Se houver uma conta associada a este usuário, você receberá instruções para redefinir sua senha.
+                  Se houver uma conta associada a este usuário ou email, você receberá uma nova senha temporária.
                 </AlertDescription>
               </Alert>
               <Button
@@ -82,20 +81,25 @@ const ForgotPassword = () => {
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="usernameOrEmail"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nome de usuário</FormLabel>
+                      <FormLabel>Nome de usuário ou email</FormLabel>
                       <FormControl>
-                        <Input placeholder="Digite seu nome de usuário" {...field} />
+                        <Input placeholder="Digite seu nome de usuário ou email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+                <div className="text-xs text-muted-foreground flex items-center mt-2">
+                  <Info className="h-3 w-3 mr-1" />
+                  <span>Uma nova senha será enviada para o seu email cadastrado</span>
+                </div>
                 <div className="pt-2">
                   <Button type="submit" className="w-full">
-                    Enviar instruções
+                    <Mail className="h-4 w-4 mr-2" />
+                    Recuperar Senha
                   </Button>
                 </div>
                 <div className="text-center pt-2">

@@ -22,6 +22,7 @@ import FixedExpenses from "@/pages/fixedExpenses/FixedExpenses";
 import Reports from "@/pages/reports/Reports";
 import Limits from "@/pages/limits/Limits";
 import Settings from "@/pages/settings/Settings";
+import ShoppingLists from "@/pages/shopping/ShoppingLists";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const App = () => (
                       <Route path="/fixed-expenses" element={<FixedExpenses />} />
                       <Route path="/reports" element={<Reports />} />
                       <Route path="/limits" element={<Limits />} />
+                      <Route path="/shopping" element={<ShoppingLists />} />
                       <Route path="/settings" element={<Settings />} />
                     </Route>
                     

@@ -16,11 +16,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { UserPlus, PiggyBank } from "lucide-react";
+import { UserPlus, PiggyBank, Mail } from "lucide-react";
 
 const registerSchema = z.object({
   username: z.string().min(3, {
     message: "Nome de usuário deve ter pelo menos 3 caracteres",
+  }),
+  email: z.string().email({
+    message: "Email inválido",
   }),
   password: z.string().min(6, {
     message: "Senha deve ter pelo menos 6 caracteres",
@@ -41,13 +44,14 @@ const Register = () => {
     resolver: zodResolver(registerSchema),
     defaultValues: {
       username: "",
+      email: "",
       password: "",
       confirmPassword: "",
     },
   });
 
   const onSubmit = (data: RegisterFormValues) => {
-    const success = register(data.username, data.password);
+    const success = register(data.username, data.email, data.password);
     if (success) {
       navigate("/login");
     }
@@ -76,6 +80,19 @@ const Register = () => {
                     <FormLabel>Nome de usuário</FormLabel>
                     <FormControl>
                       <Input placeholder="Escolha um nome de usuário" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="Seu endereço de email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

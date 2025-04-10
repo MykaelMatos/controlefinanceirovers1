@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 export interface User {
   id: string;
   username: string;
+  email: string;
   passwordHash: string;
 }
 
@@ -63,6 +64,25 @@ export interface UserSettings {
   customCategories: string[];
 }
 
+export interface ShoppingItem {
+  id: string;
+  name: string;
+  quantity: number;
+  unitCost: number;
+  total: number;
+  checked: boolean;
+}
+
+export interface ShoppingList {
+  id: string;
+  name: string;
+  date: string;
+  userId: string;
+  items: ShoppingItem[];
+  isCompleted: boolean;
+  totalCost: number;
+}
+
 // Banco de dados local usando localStorage
 export const saveToLocalStorage = <T>(key: string, data: T): void => {
   try {
@@ -115,4 +135,20 @@ export const hashPassword = (password: string): string => {
 
 export const verifyPassword = (password: string, hash: string): boolean => {
   return hashPassword(password) === hash;
+};
+
+// Função simulada de envio de email (em produção usaríamos um serviço real)
+export const sendPasswordResetEmail = (email: string, password: string): boolean => {
+  console.log(`Email de recuperação enviado para ${email} com a senha: ${password}`);
+  return true; // Em uma aplicação real, retornaria o status do envio
+};
+
+// Função para gerar uma senha temporária aleatória
+export const generateTemporaryPassword = (): string => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+  let password = '';
+  for (let i = 0; i < 10; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return password;
 };
