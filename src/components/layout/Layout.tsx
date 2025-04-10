@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import ThemeSwitcher from "../settings/ThemeSwitcher";
 import { useSettings } from "@/context/SettingsContext";
 import { cn } from "@/lib/utils";
+import { Theme } from "@/lib/database";
 
 interface LayoutProps {
   children: React.ReactNode;

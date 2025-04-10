@@ -1,7 +1,7 @@
-
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { useSettings } from "@/context/SettingsContext"
+import { Theme } from "@/lib/database";
 
 const Card = React.forwardRef<
   HTMLDivElement,

@@ -5,6 +5,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { useSettings } from "@/context/SettingsContext";
 import { cn } from "@/lib/utils";
+import { Theme } from "@/lib/database";
 import { 
   Menu,
   Home,

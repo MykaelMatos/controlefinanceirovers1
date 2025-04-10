@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext } from 'react';
-import { useLocalStorage, UserSettings, CategoryLimit, Category } from '@/lib/database';
+import { useLocalStorage, UserSettings, CategoryLimit, Category, Theme } from '@/lib/database';
 import { useAuth } from './AuthContext';
 import { toast } from "@/hooks/use-toast";
 
@@ -18,10 +18,10 @@ interface SettingsContextProps {
   getTotalLimitPercentage: (totalSpent: number) => number;
 }
 
-// Updated with new themes
+// Updated with all themes
 const defaultSettings: UserSettings = {
   userId: '',
-  theme: 'light', // Now can be light, dark, neon, cyberpunk, aurora, galaxy, quantum
+  theme: 'light', // Now includes 'light', 'dark', 'neon', 'cyberpunk', 'aurora', 'galaxy', 'quantum'
   currency: 'BRL',
   categoryLimits: [],
   totalLimit: 0,

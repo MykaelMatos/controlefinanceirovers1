@@ -11,13 +11,14 @@ import {
 import { useSettings } from "@/context/SettingsContext";
 import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
+import { Theme } from "@/lib/database"; 
 
 const ThemeSwitcher = () => {
   const { isAuthenticated } = useAuth();
   const { userSettings, updateUserSettings } = useSettings();
   const theme = userSettings?.theme || 'light';
 
-  const setTheme = (newTheme: 'light' | 'dark' | 'neon' | 'cyberpunk' | 'aurora' | 'galaxy' | 'quantum') => {
+  const setTheme = (newTheme: Theme) => {
     if (isAuthenticated) {
       updateUserSettings({ theme: newTheme });
     }

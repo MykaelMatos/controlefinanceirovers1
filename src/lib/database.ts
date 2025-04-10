@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 // Tipos para os dados do aplicativo
@@ -9,7 +8,7 @@ export interface User {
 }
 
 export type PaymentMethod = 'Pix' | 'Débito' | 'Dinheiro' | 'Cartão de Crédito';
-export type Category = 'Alimentação' | 'Transporte' | 'Moradia' | 'Lazer' | 'Saúde' | 'Educação' | 'Outros';
+export type Category = 'Alimentação' | 'Transporte' | 'Moradia' | 'Saúde' | 'Educação' | 'Lazer' | 'Vestuário' | 'Outros' | string;
 export type IncomeSource = 'Salário' | 'Freelance' | 'Presente' | 'Outros';
 export type Periodicity = 'Diário' | 'Semanal' | 'Mensal' | 'Anual';
 
@@ -45,6 +44,10 @@ export interface FixedExpense {
   dueDay?: number;
 }
 
+export type Theme = 'light' | 'dark' | 'neon' | 'cyberpunk' | 'aurora' | 'galaxy' | 'quantum';
+
+export type Currency = 'BRL' | 'USD' | 'EUR';
+
 export interface CategoryLimit {
   category: Category;
   limit: number;
@@ -52,8 +55,8 @@ export interface CategoryLimit {
 
 export interface UserSettings {
   userId: string;
-  theme: 'light' | 'dark' | 'neon' | 'cyberpunk';
-  currency: 'BRL' | 'USD' | 'EUR';
+  theme: Theme;
+  currency: Currency;
   categoryLimits: CategoryLimit[];
   totalLimit: number;
   receiveNotifications: boolean;
