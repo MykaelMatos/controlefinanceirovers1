@@ -18,9 +18,10 @@ interface SettingsContextProps {
   getTotalLimitPercentage: (totalSpent: number) => number;
 }
 
+// Updated with new themes
 const defaultSettings: UserSettings = {
   userId: '',
-  theme: 'light',
+  theme: 'light', // Now can be light, dark, neon, cyberpunk, aurora, galaxy, quantum
   currency: 'BRL',
   categoryLimits: [],
   totalLimit: 0,
@@ -39,7 +40,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     ? allSettings.find(s => s.userId === currentUser.id) || { ...defaultSettings, userId: currentUser.id }
     : null;
 
-  // Atualizar as configurações do usuário
+  // Atualizar as configurações do usuário com feedback visual
   const updateUserSettings = (settings: Partial<UserSettings>) => {
     if (!currentUser || !userSettings) return;
 
@@ -56,10 +57,32 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       }
     });
 
+    // Update toast style based on the theme
+    const toastStyle = getToastStyleForTheme(settings.theme || userSettings.theme);
+
     toast({
       title: "Configurações atualizadas",
       description: "Suas preferências foram salvas com sucesso",
+      ...toastStyle
     });
+  };
+
+  // Helper function to style toasts based on theme
+  const getToastStyleForTheme = (theme: string) => {
+    switch(theme) {
+      case 'aurora':
+        return { className: "bg-[hsl(230_20%_15%)] border border-[hsl(180_100%_60%/0.5)] text-[hsl(180_100%_80%)]" };
+      case 'galaxy':
+        return { className: "bg-[hsl(260_30%_15%)] border border-[hsl(290_100%_60%/0.5)] text-[hsl(290_100%_80%)]" };
+      case 'quantum':
+        return { className: "bg-[hsl(200_50%_15%)] border border-[hsl(180_100%_50%/0.5)] text-[hsl(180_100%_80%)]" };
+      case 'neon':
+        return { className: "bg-[hsl(240_10%_10%)] border border-[hsl(150_100%_50%/0.5)] text-[hsl(150_100%_80%)]" };
+      case 'cyberpunk':
+        return { className: "bg-[hsl(220_76%_15%)] border-2 border-[hsl(60_100%_50%)] text-[hsl(60_100%_50%)]" };
+      default:
+        return {};
+    }
   };
 
   // Adicionar limite para uma categoria
@@ -70,9 +93,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const updatedLimits = [...userSettings.categoryLimits.filter(l => l.category !== category), newLimit];
     updateUserSettings({ categoryLimits: updatedLimits });
 
+    const toastStyle = getToastStyleForTheme(userSettings.theme);
     toast({
       title: "Limite adicionado",
       description: `Limite de R$ ${limit.toFixed(2)} para ${category} configurado`,
+      ...toastStyle
     });
   };
 
@@ -85,9 +110,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     );
     updateUserSettings({ categoryLimits: updatedLimits });
 
+    const toastStyle = getToastStyleForTheme(userSettings.theme);
     toast({
       title: "Limite atualizado",
       description: `Limite para ${category} atualizado para R$ ${limit.toFixed(2)}`,
+      ...toastStyle
     });
   };
 
@@ -98,9 +125,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const updatedLimits = userSettings.categoryLimits.filter(l => l.category !== category);
     updateUserSettings({ categoryLimits: updatedLimits });
 
+    const toastStyle = getToastStyleForTheme(userSettings.theme);
     toast({
       title: "Limite removido",
       description: `Limite para ${category} foi removido`,
+      ...toastStyle
     });
   };
 
@@ -110,9 +139,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     updateUserSettings({ totalLimit: limit });
 
+    const toastStyle = getToastStyleForTheme(userSettings.theme);
     toast({
       title: "Limite total atualizado",
       description: `Limite total atualizado para R$ ${limit.toFixed(2)}`,
+      ...toastStyle
     });
   };
 
@@ -121,10 +152,12 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     if (!currentUser || !userSettings) return;
 
     if (userSettings.customCategories.includes(category)) {
+      const toastStyle = getToastStyleForTheme(userSettings.theme);
       toast({
         title: "Categoria já existe",
         description: "Esta categoria já foi adicionada anteriormente",
         variant: "destructive",
+        ...toastStyle
       });
       return;
     }
@@ -132,9 +165,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const updatedCategories = [...userSettings.customCategories, category];
     updateUserSettings({ customCategories: updatedCategories });
 
+    const toastStyle = getToastStyleForTheme(userSettings.theme);
     toast({
       title: "Categoria adicionada",
       description: `A categoria ${category} foi adicionada com sucesso`,
+      ...toastStyle
     });
   };
 
@@ -145,9 +180,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const updatedCategories = userSettings.customCategories.filter(c => c !== category);
     updateUserSettings({ customCategories: updatedCategories });
 
+    const toastStyle = getToastStyleForTheme(userSettings.theme);
     toast({
       title: "Categoria removida",
       description: `A categoria ${category} foi removida`,
+      ...toastStyle
     });
   };
 
