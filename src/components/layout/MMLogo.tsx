@@ -21,7 +21,7 @@ const MMLogo: React.FC<MMLogoProps> = ({ className, size = 'md' }) => {
       className
     )}>
       <img
-        src="/lovable-uploads/d9bd6960-53e5-4351-8475-6742fc49477e.png"
+        src="/lovable-uploads/3cf65954-2442-4e26-b68d-db12e0573fb6.png"
         alt="MM Logo"
         className="w-full h-full object-contain"
       />

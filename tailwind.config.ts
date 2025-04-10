@@ -65,9 +65,11 @@ export default {
 				},
 				// Custom MM logo colors
 				mm: {
-					purple: '#9b87f5',
+					purple: '#8257E6',
+					darkPurple: '#6943D1',
+					lightPurple: '#A78BFA',
 					dark: '#1A1F2C',
-					light: '#D6BCFA',
+					light: '#E2D9F3',
 				}
 			},
 			borderRadius: {

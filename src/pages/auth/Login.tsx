@@ -50,13 +50,13 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-background">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md bg-gradient-to-br from-white to-purple-50 dark:from-gray-900 dark:to-purple-950/30">
         <CardHeader className="space-y-1 flex flex-col items-center">
-          <div className="mb-4 p-2 bg-primary rounded-full flex items-center justify-center">
+          <div className="mb-4 p-4 rounded-full flex items-center justify-center bg-gradient-to-br from-mm-purple/10 to-mm-lightPurple/20 dark:from-mm-purple/20 dark:to-mm-darkPurple/40">
             <MMLogo size="lg" />
           </div>
-          <CardTitle className="text-2xl font-bold">FinanceTracker</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl font-bold text-mm-dark dark:text-white">FinanceTracker</CardTitle>
+          <CardDescription className="text-mm-dark/70 dark:text-white/70">
             Faça login para acessar o controle de despesas
           </CardDescription>
         </CardHeader>
@@ -90,11 +90,11 @@ const Login = () => {
                 )}
               />
               <div className="text-sm text-right">
-                <Link to="/forgot-password" className="text-primary hover:underline">
+                <Link to="/forgot-password" className="text-mm-purple hover:text-mm-darkPurple hover:underline">
                   Esqueci minha senha
                 </Link>
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full bg-mm-purple hover:bg-mm-darkPurple">
                 Entrar
               </Button>
             </form>
@@ -103,7 +103,7 @@ const Login = () => {
         <CardFooter className="flex flex-col">
           <div className="text-sm text-muted-foreground mt-2">
             Não tem uma conta?{" "}
-            <Link to="/register" className="text-primary hover:underline">
+            <Link to="/register" className="text-mm-purple hover:text-mm-darkPurple hover:underline">
               Registre-se
             </Link>
           </div>
