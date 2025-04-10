@@ -1,71 +1,110 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 260 20% 98%;
+    --foreground: 260 30% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 260 30% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 260 30% 10%;
 
-    --primary: 221.2 83% 53.3%;
+    --primary: 260 60% 55%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 260 30% 96%;
+    --secondary-foreground: 260 30% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 260 30% 96%;
+    --muted-foreground: 260 20% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 260 30% 96%;
+    --accent-foreground: 260 30% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83% 53.3%;
+    --border: 260 30% 90%;
+    --input: 260 30% 90%;
+    --ring: 260 60% 55%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 260 20% 5%;
+    --foreground: 260 20% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 260 20% 7%;
+    --card-foreground: 260 20% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 260 20% 7%;
+    --popover-foreground: 260 20% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 260 60% 60%;
+    --primary-foreground: 260 20% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 260 20% 12%;
+    --secondary-foreground: 260 20% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 260 20% 12%;
+    --muted-foreground: 260 20% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 260 20% 12%;
+    --accent-foreground: 260 20% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 260 20% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: 260 20% 15%;
+    --input: 260 20% 15%;
+    --ring: 260 60% 60%;
   }
 
+  .aurora {
+    --background: 260 30% 6%;
+    --foreground: 260 20% 98%;
+    
+    --card: 260 30% 10%;
+    --card-foreground: 260 20% 98%;
+    
+    --popover: 260 30% 10%;
+    --popover-foreground: 260 20% 98%;
+    
+    --primary: 260 60% 60%;
+    --primary-foreground: 260 10% 5%;
+    
+    --secondary: 280 60% 50%;
+    --secondary-foreground: 260 10% 5%;
+    
+    --muted: 260 20% 15%;
+    --muted-foreground: 260 20% 70%;
+    
+    --accent: 280 60% 50%;
+    --accent-foreground: 260 10% 5%;
+    
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 260 10% 5%;
+    
+    --border: 260 60% 30%;
+    --input: 260 30% 15%;
+    --ring: 260 60% 60%;
+    
+    --sidebar-background: 260 30% 5%;
+    --sidebar-foreground: 260 20% 98%;
+    --sidebar-primary: 260 60% 60%;
+    --sidebar-primary-foreground: 260 10% 5%;
+    --sidebar-accent: 280 60% 50%;
+    --sidebar-accent-foreground: 260 10% 5%;
+    --sidebar-border: 260 20% 15%;
+    --sidebar-ring: 260 60% 60%;
+  }
+
+  /* Keep other theme definitions */
   .neon {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -126,47 +165,6 @@
     --ring: 320 100% 50%;
   }
 
-  /* New futuristic theme: Aurora */
-  .aurora {
-    --background: 230 20% 10%;
-    --foreground: 180 100% 80%;
-    
-    --card: 230 30% 15%;
-    --card-foreground: 180 100% 80%;
-    
-    --popover: 230 30% 15%;
-    --popover-foreground: 180 100% 80%;
-    
-    --primary: 180 100% 60%;
-    --primary-foreground: 230 20% 10%;
-    
-    --secondary: 280 100% 70%;
-    --secondary-foreground: 230 20% 10%;
-    
-    --muted: 230 20% 20%;
-    --muted-foreground: 180 60% 70%;
-    
-    --accent: 280 100% 70%;
-    --accent-foreground: 230 20% 10%;
-    
-    --destructive: 0 100% 60%;
-    --destructive-foreground: 230 20% 10%;
-    
-    --border: 180 50% 50%;
-    --input: 230 30% 20%;
-    --ring: 180 100% 60%;
-    
-    --sidebar-background: 230 30% 8%;
-    --sidebar-foreground: 180 100% 80%;
-    --sidebar-primary: 180 100% 60%;
-    --sidebar-primary-foreground: 230 20% 10%;
-    --sidebar-accent: 280 100% 70%;
-    --sidebar-accent-foreground: 230 20% 10%;
-    --sidebar-border: 230 20% 20%;
-    --sidebar-ring: 180 100% 60%;
-  }
-
-  /* New futuristic theme: Galaxy */
   .galaxy {
     --background: 260 30% 5%;
     --foreground: 260 100% 90%;
@@ -206,7 +204,6 @@
     --sidebar-ring: 290 100% 60%;
   }
 
-  /* New futuristic theme: Quantum */
   .quantum {
     --background: 200 50% 5%;
     --foreground: 180 100% 80%;
@@ -257,7 +254,6 @@
   }
 }
 
-/* Animações */
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -314,18 +310,15 @@
   animation: gradient-shift 5s ease infinite;
 }
 
-/* Glassmorphism */
 .glass {
   @apply bg-background/50 backdrop-blur-lg border border-white/10 shadow-lg;
 }
 
-/* Card designs */
 .card-gradient {
   background: linear-gradient(135deg, hsla(var(--card)), hsla(var(--card)/0.8));
   backdrop-filter: blur(10px);
 }
 
-/* Neon theme styles */
 .neon .border {
   box-shadow: 0 0 5px hsla(var(--primary));
 }
@@ -338,7 +331,6 @@
   box-shadow: 0 0 15px hsla(var(--primary)/0.5);
 }
 
-/* Cyberpunk theme styles */
 .cyberpunk .border {
   border-width: 2px;
   box-shadow: 5px 5px 0px hsla(var(--border));
@@ -354,7 +346,6 @@
   box-shadow: 6px 6px 0px hsla(var(--border));
 }
 
-/* Aurora theme styles */
 .aurora .border {
   border-width: 1px;
   box-shadow: 0 0 10px hsla(var(--primary)/0.7);
@@ -369,7 +360,6 @@
   box-shadow: 0 0 20px hsla(var(--primary)/0.5);
 }
 
-/* Galaxy theme styles */
 .galaxy .border {
   border-width: 1px;
   box-shadow: 0 0 8px hsla(var(--primary)/0.7);
@@ -385,13 +375,13 @@
   box-shadow: 0 0 20px hsla(var(--primary)/0.5);
 }
 
-/* Quantum theme styles */
 .quantum .border {
   border-width: 1px;
   box-shadow: 0 0 8px hsla(var(--primary)/0.7);
 }
 
 .quantum button:not(.border-none) {
+  border-width: 2px;
   box-shadow: 0 0 10px hsla(var(--primary)/0.7);
   position: relative;
   overflow: hidden;

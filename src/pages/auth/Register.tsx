@@ -16,7 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { UserPlus, PiggyBank, Mail } from "lucide-react";
+import { UserPlus, Mail } from "lucide-react";
+import MMLogo from "@/components/layout/MMLogo";
 
 const registerSchema = z.object({
   username: z.string().min(3, {
@@ -61,8 +62,8 @@ const Register = () => {
     <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-background">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 flex flex-col items-center">
-          <div className="mb-4 p-2 bg-primary rounded-full">
-            <PiggyBank className="h-10 w-10 text-primary-foreground" />
+          <div className="mb-4 p-2 bg-primary rounded-full flex items-center justify-center">
+            <MMLogo size="lg" />
           </div>
           <CardTitle className="text-2xl font-bold">Criar Conta</CardTitle>
           <CardDescription>

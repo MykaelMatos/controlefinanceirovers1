@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useSettings } from "@/context/SettingsContext";
 import { cn } from "@/lib/utils";
 import { Theme } from "@/lib/database";
+import MMLogo from "./MMLogo";
 import { 
   Menu,
   Home,
@@ -16,10 +16,10 @@ import {
   ChevronDown,
   ChevronUp,
   DollarSign,
-  PiggyBank,
   Clock,
   AlertCircle,
-  X
+  X,
+  ShoppingCart
 } from "lucide-react";
 
 const Navbar = () => {
@@ -54,6 +54,7 @@ const Navbar = () => {
     { path: "/fixed-expenses", icon: <Clock className="h-5 w-5" />, name: "Despesas Fixas" },
     { path: "/reports", icon: <BarChart className="h-5 w-5" />, name: "Relatórios" },
     { path: "/limits", icon: <AlertCircle className="h-5 w-5" />, name: "Limites" },
+    { path: "/shopping", icon: <ShoppingCart className="h-5 w-5" />, name: "Compras" },
     { path: "/settings", icon: <Settings className="h-5 w-5" />, name: "Configurações" },
   ];
 
@@ -61,12 +62,12 @@ const Navbar = () => {
     <nav className={cn(
       "text-primary-foreground shadow-md sticky top-0 z-40 transition-all duration-300",
       scrolled ? "backdrop-blur-lg bg-background/80" : "bg-primary",
-      theme === 'aurora' && "bg-gradient-to-r from-[hsl(180_100%_30%)] to-[hsl(220_100%_40%)]",
-      theme === 'galaxy' && "bg-gradient-to-r from-[hsl(290_100%_30%)] to-[hsl(260_100%_20%)]",
-      theme === 'quantum' && "bg-gradient-to-r from-[hsl(180_100%_25%)] to-[hsl(220_100%_30%)]",
-      scrolled && theme === 'aurora' && "bg-background/40 backdrop-blur-xl border-b border-[hsl(180_100%_60%/0.2)]",
-      scrolled && theme === 'galaxy' && "bg-background/40 backdrop-blur-xl border-b border-[hsl(290_100%_60%/0.2)]",
-      scrolled && theme === 'quantum' && "bg-background/40 backdrop-blur-xl border-b border-[hsl(180_100%_50%/0.2)]"
+      theme === 'aurora' && "bg-gradient-to-r from-[hsl(260_60%_30%)] to-[hsl(280_60%_40%)]",
+      theme === 'galaxy' && "bg-gradient-to-r from-[hsl(260_60%_30%)] to-[hsl(280_60%_20%)]",
+      theme === 'quantum' && "bg-gradient-to-r from-[hsl(260_60%_25%)] to-[hsl(280_60%_30%)]",
+      scrolled && theme === 'aurora' && "bg-background/40 backdrop-blur-xl border-b border-[hsl(260_60%_60%/0.2)]",
+      scrolled && theme === 'galaxy' && "bg-background/40 backdrop-blur-xl border-b border-[hsl(260_60%_60%/0.2)]",
+      scrolled && theme === 'quantum' && "bg-background/40 backdrop-blur-xl border-b border-[hsl(260_60%_50%/0.2)]"
     )}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
@@ -76,17 +77,16 @@ const Navbar = () => {
               theme === 'aurora' && "animate-glow",
               theme === 'quantum' && "relative z-10 after:content-[''] after:absolute after:inset-0 after:bg-primary/20 after:blur-lg after:z-[-1]"
             )}>
-              <PiggyBank className={cn(
-                "h-8 w-8",
-                theme === 'aurora' && "text-[hsl(180_100%_80%)]",
-                theme === 'galaxy' && "text-[hsl(290_100%_80%)]",
-                theme === 'quantum' && "text-[hsl(180_100%_70%)]"
+              <MMLogo size="md" className={cn(
+                theme === 'aurora' && "text-[hsl(260_60%_80%)]",
+                theme === 'galaxy' && "text-[hsl(260_60%_80%)]",
+                theme === 'quantum' && "text-[hsl(260_60%_70%)]"
               )} />
               <span className={cn(
                 "text-xl font-bold",
-                theme === 'aurora' && "text-[hsl(180_100%_80%)]",
-                theme === 'galaxy' && "text-[hsl(290_100%_80%)]",
-                theme === 'quantum' && "text-[hsl(180_100%_80%)]"
+                theme === 'aurora' && "text-[hsl(260_60%_80%)]",
+                theme === 'galaxy' && "text-[hsl(260_60%_80%)]",
+                theme === 'quantum' && "text-[hsl(260_60%_80%)]"
               )}>FinanceTracker</span>
             </Link>
           </div>
